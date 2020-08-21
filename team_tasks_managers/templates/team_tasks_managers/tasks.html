@@ -1,0 +1,35 @@
+{% extends "team_tasks_managers/base.html" %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block header %}
+
+    </br>
+    <h1>Tasks</h1>
+
+{% endblock header %}
+
+{% block content %}
+
+    <table class = "table table-compact table-bordered">
+        {% for task in tasks %}
+            {% if task.completed %}
+                <tr>
+                    <td class = "striker"><a href = "{% url 'team_tasks_managers:task' task.id %}">{{ task }}</a></td>
+                    <td><center><a href = "{% url 'team_tasks_managers:uncross' task.id %}">Uncross</a></center></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td><a href = "{% url 'team_tasks_managers:task' task.id %}">{{ task }}</a></td>
+                    <td><center><a href = "{% url 'team_tasks_managers:cross_off' task.id %}">Cross off</a></center></td>
+                </tr>
+            {% endif %}
+         {% empty %}
+            <h2>No tasks to display</h2>
+        {% endfor %}
+    </table>
+
+    <h3><a href = "{% url 'team_tasks_managers:new_task' %}">Add task</a></h3>
+
+{% endblock content %}

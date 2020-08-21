@@ -1,0 +1,70 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load static %}
+
+<!doctype html>
+<html lang="eng">
+<head>
+    <meta charset = "utf-8">
+    <meta http-equiv="X-UA-Compatibile" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TeamTasks</title>
+    <link rel="stylesheet" href = "{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <!--static navigation bar-->
+    <nav class="navbar navbar-defualt navbar-fixed-top" id="navbar_whole">
+        <div class = "container">
+
+            <div class = "navbar-header">
+                <!--button type="button" class = "navbar-toggle-collapsed"
+                    data-toggle ="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                </button-->
+                <a class = "navbar-brand"
+                    href = "{% url 'team_tasks_managers:index' %}">
+                    Team Tasks Manager
+                </a>
+            </div>
+
+            
+            <div id="navbar" class="navbar-collapse collapse">
+                {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href = "{% url 'team_tasks_managers:tasks' %}">Tasks</a>
+                        </li>
+                    </ul>
+                {% endif %}
+
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
+                        <li><a>Hi, {{user.username}}!</a></li>
+                        <li><a href = "{% url 'users:logout' %}">Log out</a></li>
+                    {% else %}
+                        <li><a href = "{% url 'users:register' %}">Sign Up</a></li>
+                        <li><a href = "{% url 'users:login' %}">Log In</a></li>
+                    {% endif %}
+                </ul>
+            </div><!--/.nav-collapse-->
+
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="page-header">
+            {% block header %}{% endblock header %}
+        </div>
+        
+        <div>
+            {% block content %}{% endblock content %}
+        </div>
+
+    </div> <!-- /container-->
+
+</body>
+</html>

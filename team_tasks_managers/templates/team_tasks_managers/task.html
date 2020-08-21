@@ -1,0 +1,20 @@
+{% extends 'team_tasks_managers/base.html' %}
+
+{% block header %}
+
+    </br>
+    <h2>{{ task }}</h2>
+
+{% endblock header %}
+
+{% block content %}
+
+    <h3>Deadline: {{task.deadline}}</h3>
+
+    {% if task.completed %}
+        <h3>Completed</h3>
+    {% else %}
+        <h3>Not completed</h3>
+    {% endif %}
+
+{% endblock content %}

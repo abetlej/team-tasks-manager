@@ -1,0 +1,21 @@
+{% extends "team_tasks_managers/base.html" %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block header %}
+    <h2>Add a new task</h2>
+{% endblock header %}
+
+{% block content %}
+
+    <form action = "{% url 'team_tasks_managers:new_task' %}" method = 'post' class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+        {%buttons %}
+            <button name = "submit" class="btn btn-primary">Add task</button>
+        {% endbuttons %}
+    </form>
+    
+{% endblock content %}
