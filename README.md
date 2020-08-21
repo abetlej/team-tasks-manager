@@ -13,6 +13,6 @@ Allows manager to assign tasks to other team members (using admin page) and team
 ## Login details
 If you want to check out the possibilities of Team Tasks Manager, you can log in using:
 
-   **Login:** user
+   **Login:** admin
 
-   **Password:** User.user123
+   **Password:** user-admin123
