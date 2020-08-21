@@ -1,0 +1,1 @@
+web: gunicorn team_tasks_manager.wsgi --log-file -
